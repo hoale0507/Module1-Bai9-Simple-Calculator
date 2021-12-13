@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+        .button {
+            width: 60px;
+            height: 50px;
+            color: blue;
+        }
+        .monitor {
+            text-align:right;
+            /*resize:none;*/
+            font-size:100%;
+            border:2px solid black;
+            border-radius:5px;
+        }
+        th, td {
+            padding: 10px;
+        }
+        /*Đặt thuộc tính cho 1 phần tử nhất đinh*/
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="4" align="right">
+        <textarea id="Display" cols="40" rows="4"></textarea>
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <button type = button id ="(" class="button" onclick="moNgoac()">(</button>
+        </td>
+        <td>
+            <button type = button id =")" class="button" onclick="dongNgoac()">)</button>
+        </td>
+        <td>
+            <button type = button id ="%" class="button" onclick="phanTram()">%</button>
+        </td>
+        <td>
+            <button type = button id ="CE" class="button" onclick="ce()">CE</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type = button id ="7" class="button" onclick="seven()">7</button>
+        </td>
+        <td>
+            <button type = button id ="8" class="button" onclick="eight()">8</button>
+        </td>
+        <td>
+            <button type = button id ="9" class="button" onclick="nine()">9</button>
+        </td>
+        <td>
+            <button type = button id =":" class="button" onclick="divide()">:</button>
+        </td>
+    </tr>
+    <tr>
+        <td><button type = button id ="4" class="button" onclick="four()">4</button></td>
+        <td>
+            <button type = button id ="5" class="button" onclick="five()">5</button>
+        </td>
+        <td>
+            <button type = button id ="6" class="button" onclick="six()">6</button>
+        </td>
+        <td>
+            <button type = button id ="X" class="button" onclick="multiple()">X</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type = button id ="1" class="button" onclick="one()">1</button>
+        </td>
+        <td>
+            <button type = button id ="2" class="button" onclick="two()">2</button>
+        </td>
+        <td>
+            <button type = button id ="3" class="button" onclick="three()">3</button>
+        </td>
+        <td>
+            <button type = button id ="-" class="button" onclick="subt()">-</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type = button id ="0" class="button" onclick="zero()">0</button>
+        </td>
+        <td>
+            <button type = button id ="." class="button" onclick="dot()">.</button>
+        </td>
+        <td>
+            <button type = button id ="=" class="button" onclick="equal()">=</button>
+        </td>
+        <td>
+            <button type = button id ="+" class="button" onclick="plus()">+</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    let text="";
+    let result;
+    function moNgoac() {
+        addToText('(');
+    }
+    function dongNgoac() {
+        addToText(')');
+    }
+    function phanTram() {
+        addToText('%');
+        // let text1 = text.replace('%','*0.01');
+        // result = eval(text1);
+        // document.getElementById("Display").innerText = text1;
+    }
+    function ce() {
+        text = text.slice(0,text.length-1);
+        document.getElementById("Display").innerText = text;
+    }
+    function seven() {
+        addToText('7');
+    }
+    function eight() {
+        addToText('8');
+    }
+    function nine() {
+        addToText('9');
+    }
+    function divide() {
+        addToText(':');
+    }
+    function four() {
+        addToText('4');
+    }
+    function five() {
+        addToText('5');
+    }
+    function six() {
+        addToText('6');
+    }
+    function multiple() {
+        addToText('X');
+    }
+    function one() {
+        addToText('1');
+    }
+    function two() {
+        addToText('2');
+    }
+    function three() {
+        addToText('3');
+    }
+    function subt() {
+        addToText("-");
+    }
+    function zero() {
+        addToText('0');
+    }
+    function dot() {
+        addToText('.');
+    }
+    function equal() {
+        // result = eval(text);
+        text1 = text.replaceAll("%","*0.01");
+        text1 = text1.replaceAll(":","/");
+        text1 = text1.replaceAll("X","*");
+        console.log(text1);
+        result = eval(text1);
+        document.getElementById("Display").innerText= text + " = " +result;
+        text = "";
+    }
+    function plus() {
+        addToText('+');
+    }
+
+    function addToText(chuoi){
+        text = text + chuoi;
+        document.getElementById("Display").innerText = text;
+    }
+
+</script>
+</body>
+</html>
